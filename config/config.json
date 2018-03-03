@@ -1,0 +1,24 @@
+{
+  "mongoose": {
+    "uri": ""
+  },
+  "mailer": {
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "secure": false,
+    "auth": {
+      "user": "",
+      "pass": ""
+    }
+  },
+  "e-mail": "",
+  "session": {
+    "secret": "",
+    "key": "",
+    "cookie": {
+      "path": "/",
+      "httpOnly": true,
+      "maxAge": null
+    }
+  }
+}
