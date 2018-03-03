@@ -102,7 +102,7 @@ router.put('/', function (req, res, next) {
     Tag.findOne({parentId: req.session.user, name: req.body.name},
       function (err, tag) {
         if (!err) {
-          if (tag) {
+          if (tag && (tag.name === req.body.name) && (tag.color === req.body.color)) {
             return res.status(403)
               .type('application/json')
               .send(JSON.stringify({
