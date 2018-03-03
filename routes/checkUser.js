@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var Enum = require('../lib/enum');
+let express = require('express');
+let router = express.Router();
+let Enum = require('../lib/enum');
 
 router.post('/', function (req, res, next) {
-    var User = require('../models/user');
-    var params = {};
+  let User = require('../models/user');
+  let params = {};
     params[req.body.type] = req.body.value;
     return User.find(params, function (err, user) {
         if (user) {
