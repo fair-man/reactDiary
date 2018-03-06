@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
-var Income = require('../models/income');
-var moment = require('moment');
-var Enum = require('../lib/enum');
+let express = require('express');
+let router = express.Router();
+let Income = require('../models/income');
+let moment = require('moment');
+let Enum = require('../lib/enum');
 
-var date = new Date();
-var startDateCurrentMonth = new Date(date.getFullYear(), date.getMonth(), 1, 0, 0, 0, 0);
-var lastDateCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0, 0, 0, 0, 0);
+let date = new Date();
+let startDateCurrentMonth = new Date(date.getFullYear(), date.getMonth(), 1, 0, 0, 0, 0);
+let lastDateCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0, 0, 0, 0, 0);
 
 router.get('/', function (req, res, next) {
   if (req.session.user) {
@@ -47,7 +47,7 @@ router.post('/', function (req, res, next) {
       return;
     }
 
-    var income = new Income({
+    let income = new Income({
       name: req.body.name,
       money: Number(req.body.money),
       dateCreated: new Date(req.body.date.replace( /(\d{2}).(\d{2}).(\d{4})/, "$2/$1/$3")),
@@ -125,7 +125,7 @@ router.put('/', function (req, res, next) {
           //      message: Enum.rcs[0]
           //    }
           // ));
-          var income = income[0];
+          let income = income[0];
           if (income.dateCreated >= startDateCurrentMonth && income.dateCreated <= lastDateCurrentMonth) {
             res.status(200)
               .type('application/json')
@@ -172,8 +172,8 @@ router.put('/', function (req, res, next) {
 
 router.delete('/', function (req, res, next) {
   if(req.session.user) {
-    var selectedIds = req.body.selectedIds.split('&');
-    var requestArr = [];
+    let selectedIds = req.body.selectedIds.split('&');
+    let requestArr = [];
 
     if (selectedIds.length) {
       selectedIds.forEach(function (id) {
