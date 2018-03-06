@@ -1,6 +1,6 @@
-let express = require('express');
-let router = express.Router();
-let Enum = require('../lib/enum');
+var express = require('express');
+var router = express.Router();
+var Enum = require('../lib/enum');
 
 router.get('/', function (req, res, next) {
   if(req.session.user) {

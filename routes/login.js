@@ -1,9 +1,9 @@
-let express = require('express');
-let router = express.Router();
-let Enum = require('../lib/enum');
+var express = require('express');
+var router = express.Router();
+var Enum = require('../lib/enum');
 
 router.post('/', function (req, res, next) {
-  let User = require('../models/user');
+  var User = require('../models/user');
 
   User.findOne({username: req.body.name}, function (err, user) {
     if (err) return next(err);
