@@ -12,6 +12,7 @@ let login = require('./routes/login');
 let signup = require('./routes/signup');
 let recovery = require('./routes/recovery');
 let updateUserPassword = require('./routes/updateUserPassword');
+let userAvatarUpload = require('./routes/userAvatarUpload');
 let logout = require('./routes/logout');
 let checkUser = require('./routes/checkUser');
 let checkAuthUser = require('./routes/checkAuthUser');
@@ -22,8 +23,10 @@ let statistics = require('./routes/statistics');
 let tags = require('./routes/tags');
 
 let app = express();
+const fileUpload = require('express-fileupload');
 
 app.use(express.static('public'));
+app.use(fileUpload());
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN);
@@ -59,6 +62,7 @@ app.use('/checkUser', checkUser);
 app.use('/checkAuthUser', checkAuthUser);
 app.use('/getUser', getUser);
 app.use('/updateUserPassword', updateUserPassword);
+app.use('/userAvatarUpload', userAvatarUpload);
 // income route
 app.use('/incomes', incomes);
 app.use('/expenses', expenses);
