@@ -7,7 +7,7 @@ router.post('/', function (req, res, next) {
   var authUser = req.session.user;
   var savePath = Enum.accountFileUploadFolder;
 
-  req.files.avatar.mv('./public/' + savePath + req.files.avatar.name, function(err) {
+  req.files.avatar.mv('./public/' + authUser + '.' + req.files.avatar.name.split('.')[1], function(err) {
     if (err)
       return res.status(500).send(err);
 
